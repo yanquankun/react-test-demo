@@ -1,26 +1,15 @@
-import React, { useEffect, useCallback, useState } from "react";
-import ReactDOM from "react-dom";
+import React, { useEffect, useCallback, useState, FC } from "react";
 import { useInit } from "./hook/useInit";
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default (props) => {
-  const [page, setPage] = useState(1);
+const test: FC<any> = (props) => {
+  const [page, setPage] = useState<number>(1);
+  const [size, setSize] = useState<number>(20);
 
   const { closeMount, openMount, mount } = useInit();
 
   const test = useCallback(() => {
-    console.log(page);
-  }, [page]);
-
-  // setTimeout(() => {
-  //   // openMount();
-  //   setPage(2);
-  // }, 200);
-
-  // setTimeout(() => {
-  //   // openMount();
-  //   setPage(3);
-  // }, 1000);
+    console.log(page, size);
+  }, [page, size]);
 
   useEffect(() => {
     if (!mount) {
@@ -28,11 +17,12 @@ export default (props) => {
       closeMount();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [test, page]);
+  }, [test]);
 
   const tap = () => {
     openMount();
     const next = page + 1;
+    setSize(size + next);
     setPage(next);
   };
 
@@ -43,3 +33,5 @@ export default (props) => {
     </>
   );
 };
+
+export default test;

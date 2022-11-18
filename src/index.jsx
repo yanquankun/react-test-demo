@@ -1,9 +1,8 @@
 // import { hot } from "react-hot-loader/root";
 import React from "react";
 import ReactDOM from "react-dom";
-import { AppContainer, hot } from "react-hot-loader";
 import "./index.css";
-import Test from "./test.jsx";
+import Test from "./test";
 
 // class Square extends React.Component {
 //   constructor(props) {

@@ -16,6 +16,7 @@ module.exports = {
     hotOnly: true,
     historyApiFallback: true,
   },
+  devtool: "inline-source-map",
   watch: true,
   plugins: [
     new HtmlWebpackPlugin({
@@ -31,7 +32,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx|es6)$/,
+        test: /\.(js|jsx|tsx|es6)$/,
         exclude: /(node_modules)/,
         use: {
           loader: "babel-loader",
@@ -45,7 +46,15 @@ module.exports = {
         test: /\.(png|jpeg|jpg|svg)$/,
         use: ["file-loader"],
       },
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
     ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
   },
   output: {
     path: __dirname + "/dist",

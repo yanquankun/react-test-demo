@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState, useMemo } from "react";
+import { useCallback, useState } from "react";
 
 export function useInit() {
   const [mount, setMount] = useState(false);
